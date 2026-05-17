@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function CTASection(){return <section className='card mt-12 p-8 text-center'><h2 className='text-2xl font-bold'>Build your financial roadmap today</h2><p className='mt-2'>Try our popular tools for tax and compounding estimates.</p><Link href='/investment-calculator' className='mt-4 inline-block rounded bg-emerald-600 px-4 py-2 text-white'>Popular Tools</Link></section>}

@@ -1,0 +1,4 @@
+'use client';
+import Link from 'next/link';import { useState } from 'react';
+const nav=[['Home','/'],['Tax','/tax-calculator'],['Compound','/compound-calculator'],['Investment','/investment-calculator'],['News','/news'],['About','/about'],['Contact','/contact']];
+export default function Header(){const[m,setM]=useState(false);return <header className='sticky top-0 z-50 bg-slate-900 text-white'><div className='container-main flex items-center justify-between py-3'><Link href='/' className='font-bold'>FinWise Hub</Link><button className='md:hidden' onClick={()=>setM(!m)}>☰</button><nav className='hidden gap-4 md:flex'>{nav.map(([n,h])=><Link key={h} href={h}>{n}</Link>)}</nav></div>{m&&<nav className='container-main flex flex-col gap-2 pb-3 md:hidden'>{nav.map(([n,h])=><Link key={h} href={h}>{n}</Link>)}</nav>}</header>}
