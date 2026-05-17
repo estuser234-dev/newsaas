@@ -1,0 +1,4 @@
+export type Frequency = 'monthly' | 'quarterly' | 'yearly';
+export const calcTax = (income:number,deductions:number,exemptions:number,rate:number)=>{const taxable=Math.max(income-deductions-exemptions,0);const tax=taxable*(rate/100);return{gross:income,deductions:deductions+exemptions,taxable,tax,monthly:tax/12};};
+export const calcCompound=(p:number,m:number,r:number,y:number,f:Frequency)=>{const n=f==='monthly'?12:f==='quarterly'?4:1;let bal=p;const rows=[] as {year:number,invested:number,value:number}[];for(let yr=1;yr<=y;yr++){for(let i=0;i<12;i++){bal+=m;bal*=1+(r/100)/n/(12/n);}rows.push({year:yr,invested:p+m*12*yr,value:bal});}return{rows,totalInvested:p+m*12*y,finalValue:bal,profit:bal-(p+m*12*y)};};
+export const calcFuture=(s:number,m:number,r:number,y:number)=>{let v=s;for(let i=0;i<y*12;i++){v=(v+m)*(1+r/1200);}const c=s+m*y*12;return{value:v,contribution:c,returns:v-c};};

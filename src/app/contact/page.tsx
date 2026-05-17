@@ -1,0 +1,4 @@
+'use client';
+import { useState } from 'react';
+export default function Page(){const[f,setF]=useState({name:'',email:'',subject:'',message:''});const[e,setE]=useState('');const[ok,setOk]=useState(false);const submit=()=>{if(Object.values(f).some(v=>!v.trim()))return setE('All fields are required.');if(!f.email.includes('@')) return setE('Valid email required.');setE('');setOk(true);};
+return <main className='container-main py-10'><h1 className='text-3xl font-bold'>Contact Us</h1><div className='card mt-6 grid gap-3 p-6'>{Object.keys(f).map(k=><input key={k} className='rounded border p-2' placeholder={k} value={(f as any)[k]} onChange={e=>setF({...f,[k]:e.target.value})}/>)}<button onClick={submit} className='rounded bg-blue-600 px-4 py-2 text-white'>Submit</button>{e&&<p className='text-red-600'>{e}</p>}{ok&&<p className='text-emerald-600'>Thank you! We received your message.</p>}</div></main>}

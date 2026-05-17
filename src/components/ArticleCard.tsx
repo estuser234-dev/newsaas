@@ -1,0 +1,2 @@
+import { Article } from '@/data/news';
+export default function ArticleCard({article}:{article:Article}){return <article className='card overflow-hidden'><img src={article.image} alt={article.title} className='h-40 w-full object-cover'/><div className='p-4'><p className='text-xs text-blue-600'>{article.category} • {article.date}</p><h3 className='mt-1 font-semibold'>{article.title}</h3><p className='mt-2 text-sm'>{article.description}</p><button className='mt-3 rounded bg-blue-600 px-3 py-1 text-white'>Read More</button></div></article>}
